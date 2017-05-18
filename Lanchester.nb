@@ -1,0 +1,534 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     22026,        524]
+NotebookOptionsPosition[     21581,        506]
+NotebookOutlinePosition[     21925,        521]
+CellTagsIndexPosition[     21882,        518]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Lanchester", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "a_", ",", "b_", ",", "c_", ",", "d_", ",", "e_", ",", "f_", ",", "g_", 
+       ",", "h_", ",", "j_", ",", "k_"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x0_", ",", "y0_"}], "}"}], ",", "t1_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"x", ",", "y", ",", "t"}], "}"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"x", ",", "y"}], "}"}], "/.", 
+       RowBox[{"Quiet", "[", 
+        RowBox[{"NDSolve", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"x", "'"}], "[", "t", "]"}], "\[Equal]", 
+             RowBox[{
+              RowBox[{"Boole", "[", 
+               RowBox[{
+                RowBox[{"x", "[", "t", "]"}], ">", "0"}], "]"}], "*", 
+              RowBox[{"Boole", "[", 
+               RowBox[{
+                RowBox[{"y", "[", "t", "]"}], ">", "0"}], "]"}], " ", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"-", "a"}], " ", 
+                 RowBox[{"y", "[", "t", "]"}]}], "+", 
+                RowBox[{"b", " ", 
+                 RowBox[{"Sum", "[", 
+                  RowBox[{
+                   RowBox[{"DiracDelta", "[", 
+                    RowBox[{"t", "-", "n"}], "]"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"n", ",", "5", ",", "150", ",", "j"}], "}"}]}], 
+                  "]"}]}], "-", 
+                RowBox[{"h", " ", 
+                 RowBox[{"x", "[", "t", "]"}], " ", 
+                 RowBox[{"DiracDelta", "[", 
+                  RowBox[{"t", "-", "e"}], "]"}]}], "-", 
+                RowBox[{"250000", " ", 
+                 RowBox[{"DiracDelta", "[", 
+                  RowBox[{"t", "-", "200"}], "]"}]}]}], ")"}]}]}], ",", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"y", "'"}], "[", "t", "]"}], "\[Equal]", 
+             RowBox[{
+              RowBox[{"Boole", "[", 
+               RowBox[{
+                RowBox[{"x", "[", "t", "]"}], ">", "0"}], "]"}], "*", 
+              RowBox[{"Boole", "[", 
+               RowBox[{
+                RowBox[{"y", "[", "t", "]"}], ">", "0"}], "]"}], " ", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"-", "c"}], " ", 
+                 RowBox[{"x", "[", "t", "]"}]}], "+", 
+                RowBox[{"d", " ", 
+                 RowBox[{"Sum", "[", 
+                  RowBox[{
+                   RowBox[{"DiracDelta", "[", 
+                    RowBox[{"t", "-", "n"}], "]"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"n", ",", "5", ",", "150", ",", "k"}], "}"}]}], 
+                  "]"}]}], "-", 
+                RowBox[{"g", " ", 
+                 RowBox[{"y", "[", "t", "]"}], " ", 
+                 RowBox[{"DiracDelta", "[", 
+                  RowBox[{"t", "-", "f"}], "]"}]}], "-", 
+                RowBox[{"250000", " ", 
+                 RowBox[{"DiracDelta", "[", 
+                  RowBox[{"t", "-", "200"}], "]"}]}]}], ")"}]}]}], ",", 
+            RowBox[{
+             RowBox[{"x", "[", "0", "]"}], "\[Equal]", "x0"}], ",", 
+            RowBox[{
+             RowBox[{"y", "[", "0", "]"}], "\[Equal]", "y0"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", "y"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"t", ",", "0", ",", "t1"}], "}"}]}], "]"}], "]"}]}], "//", 
+      "Flatten"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"soln", ",", 
+       RowBox[{"col1", "=", 
+        RowBox[{"Darker", "@", "Green"}]}], ",", 
+       RowBox[{"col2", "=", 
+        RowBox[{"ColorData", "[", 
+         RowBox[{"\"\<HTML\>\"", ",", "\"\<Red\>\""}], "]"}]}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Plot", "[", 
+      RowBox[{
+       RowBox[{"Evaluate", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"#", "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "[", "t", "]"}], ",", 
+            RowBox[{
+             RowBox[{"#", "[", 
+              RowBox[{"[", "2", "]"}], "]"}], "[", "t", "]"}]}], "}"}], "&"}],
+          "[", 
+         RowBox[{"soln", "=", 
+          RowBox[{"Quiet", "@", 
+           RowBox[{"Lanchester", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+              "a", ",", "b", ",", "c", ",", "d", ",", "e", ",", "f", ",", "g",
+                ",", "h", ",", "j", ",", "k"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"good0", ",", "bad0"}], "}"}], ",", "tmax"}], "]"}]}]}],
+          "]"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"t", ",", "0", ",", 
+         RowBox[{"Min", "[", 
+          RowBox[{"tmax", ",", 
+           RowBox[{"Min", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"#", "[", 
+               RowBox[{"[", 
+                RowBox[{"1", ",", "1", ",", "2"}], "]"}], "]"}], "&"}], "/@", 
+             "soln"}], "]"}]}], "]"}]}], "}"}], ",", 
+       RowBox[{"AxesLabel", "\[Rule]", 
+        RowBox[{"TraditionalForm", "/@", 
+         RowBox[{"{", 
+          RowBox[{"t", ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"Style", "[", 
+              RowBox[{
+               RowBox[{"good", "[", "t", "]"}], ",", "col1"}], "]"}], ",", 
+             RowBox[{"Style", "[", 
+              RowBox[{
+               RowBox[{"bad", "[", "t", "]"}], ",", "col2"}], "]"}]}], 
+            "}"}]}], "}"}]}]}], ",", 
+       RowBox[{"PlotRange", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "1"}], ",", "300000"}], "}"}]}], ",", 
+       RowBox[{"AxesOrigin", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}]}], ",", 
+       RowBox[{"PlotStyle", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"col1", ",", "col2"}], "}"}]}], ",", 
+       RowBox[{"ImageSize", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"400", ",", "300"}], "}"}]}], ",", 
+       RowBox[{"ImagePadding", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"27", ",", "11"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"25", ",", "25"}], "}"}]}], "}"}]}]}], "]"}]}], "]"}], ",",
+    "\[IndentingNewLine]", "Delimiter", ",", "\[IndentingNewLine]", 
+   "\"\<Kills per Soldier\>\"", ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"c", ",", ".01", ",", "\"\<Good\>\""}], "}"}], ",", ".01", ",", 
+     ".07", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"a", ",", ".02", ",", "\"\<Bad\>\""}], "}"}], ",", ".02", ",", 
+     ".05", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", "Delimiter", ",", "\[IndentingNewLine]", 
+   "\"\<Bomb Dropped Time\>\"", ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"f", ",", "100", ",", "\"\<Good\>\""}], "}"}], ",", "50", ",", 
+     "200", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"e", ",", "100", ",", "\"\<Bad\>\""}], "}"}], ",", "50", ",", 
+     "200", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", "Delimiter", ",", "\[IndentingNewLine]", 
+   "\"\<Bomb Effectiveness\>\"", ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"g", ",", ".5", ",", "\"\<Good\>\""}], "}"}], ",", ".1", ",", 
+     ".8", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"h", ",", ".5", ",", "\"\<Bad\>\""}], "}"}], ",", ".1", ",", 
+     ".8", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", "Delimiter", ",", "\[IndentingNewLine]", 
+   "\"\<Reinforcements\>\"", ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"b", ",", "20000", ",", "\"\<Good\>\""}], "}"}], ",", "10000", 
+     ",", "20000", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"d", ",", "20000", ",", "\"\<Bad\>\""}], "}"}], ",", "10000", 
+     ",", "20000", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"j", ",", "10", ",", "\"\<Good Rate\>\""}], "}"}], ",", "5", 
+     ",", "50", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"k", ",", "10", ",", "\"\<Bad Rate\>\""}], "}"}], ",", "5", ",",
+      "50", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", "Delimiter", ",", "\[IndentingNewLine]", 
+   "\"\<initial troops\>\"", ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"good0", ",", "30000", ",", "\"\<Good\>\""}], "}"}], ",", 
+     "10000", ",", "50000", ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"bad0", ",", "15000", ",", "\"\<Bad\>\""}], "}"}], ",", "10000",
+      ",", "50000", ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "}"}], ",", "Delimiter", ",",
+    "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"tmax", ",", "100", ",", "\"\<time\>\""}], "}"}], ",", "5", ",",
+      "210", ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"SaveDefinitions", "\[Rule]", "True"}], ",", 
+   RowBox[{"ControlPlacement", "\[Rule]", "Left"}], ",", 
+   RowBox[{"TrackedSymbols", "\[RuleDelayed]", 
+    RowBox[{"{", 
+     RowBox[{
+     "c", ",", "a", ",", "f", ",", "e", ",", "g", ",", "h", ",", "b", ",", 
+      "d", ",", "j", ",", "k", ",", "good0", ",", "bad0", ",", "tmax"}], 
+     "}"}]}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.70405742291247*^9, 
+  3.7040574499584455`*^9}},ExpressionUUID->"9cf1b154-20d4-4969-ae21-\
+976b0f667b58"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 0.02, $CellContext`b$$ = 
+    20000, $CellContext`bad0$$ = 15000, $CellContext`c$$ = 
+    0.01, $CellContext`d$$ = 20000, $CellContext`e$$ = 100, $CellContext`f$$ =
+     100, $CellContext`g$$ = 0.5, $CellContext`good0$$ = 
+    30000, $CellContext`h$$ = 0.5, $CellContext`j$$ = 10, $CellContext`k$$ = 
+    10, $CellContext`tmax$$ = 100, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold["Kills per Soldier"], Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`c$$], 0.01, "Good"}, 0.01, 0.07}, {{
+       Hold[$CellContext`a$$], 0.02, "Bad"}, 0.02, 0.05}, {
+      Hold["Bomb Dropped Time"], Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`f$$], 100, "Good"}, 50, 200}, {{
+       Hold[$CellContext`e$$], 100, "Bad"}, 50, 200}, {
+      Hold["Bomb Effectiveness"], Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`g$$], 0.5, "Good"}, 0.1, 0.8}, {{
+       Hold[$CellContext`h$$], 0.5, "Bad"}, 0.1, 0.8}, {
+      Hold["Reinforcements"], Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`b$$], 20000, "Good"}, 10000, 20000}, {{
+       Hold[$CellContext`d$$], 20000, "Bad"}, 10000, 20000}, {{
+       Hold[$CellContext`j$$], 10, "Good Rate"}, 5, 50}, {{
+       Hold[$CellContext`k$$], 10, "Bad Rate"}, 5, 50}, {
+      Hold["initial troops"], Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`good0$$], 30000, "Good"}, 10000, 50000}, {{
+       Hold[$CellContext`bad0$$], 15000, "Bad"}, 10000, 50000}, {{
+       Hold[$CellContext`tmax$$], 100, "time"}, 5, 210}}, Typeset`size$$ = {
+    400., {147., 153.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = False, $CellContext`c$1780$$ = 
+    0, $CellContext`a$1785$$ = 0, $CellContext`f$1786$$ = 
+    0, $CellContext`e$1787$$ = 0, $CellContext`g$1788$$ = 
+    0, $CellContext`h$1789$$ = 0, $CellContext`b$1790$$ = 
+    0, $CellContext`d$1791$$ = 0, $CellContext`j$1792$$ = 
+    0, $CellContext`k$1793$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a$$ = 0.02, $CellContext`b$$ = 
+        20000, $CellContext`bad0$$ = 15000, $CellContext`c$$ = 
+        0.01, $CellContext`d$$ = 20000, $CellContext`e$$ = 
+        100, $CellContext`f$$ = 100, $CellContext`g$$ = 
+        0.5, $CellContext`good0$$ = 30000, $CellContext`h$$ = 
+        0.5, $CellContext`j$$ = 10, $CellContext`k$$ = 
+        10, $CellContext`tmax$$ = 100}, "ControllerVariables" :> {
+        Hold[$CellContext`c$$, $CellContext`c$1780$$, 0], 
+        Hold[$CellContext`a$$, $CellContext`a$1785$$, 0], 
+        Hold[$CellContext`f$$, $CellContext`f$1786$$, 0], 
+        Hold[$CellContext`e$$, $CellContext`e$1787$$, 0], 
+        Hold[$CellContext`g$$, $CellContext`g$1788$$, 0], 
+        Hold[$CellContext`h$$, $CellContext`h$1789$$, 0], 
+        Hold[$CellContext`b$$, $CellContext`b$1790$$, 0], 
+        Hold[$CellContext`d$$, $CellContext`d$1791$$, 0], 
+        Hold[$CellContext`j$$, $CellContext`j$1792$$, 0], 
+        Hold[$CellContext`k$$, $CellContext`k$1793$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Module[{$CellContext`soln$, $CellContext`col1$ = 
+         Darker[Green], $CellContext`col2$ = ColorData["HTML", "Red"]}, 
+        Plot[
+         Evaluate[
+          ({
+           Part[#, 1][$CellContext`t], 
+           Part[#, 2][$CellContext`t]}& )[$CellContext`soln$ = Quiet[
+             $CellContext`Lanchester[{$CellContext`a$$, $CellContext`b$$, \
+$CellContext`c$$, $CellContext`d$$, $CellContext`e$$, $CellContext`f$$, \
+$CellContext`g$$, $CellContext`h$$, $CellContext`j$$, $CellContext`k$$}, \
+{$CellContext`good0$$, $CellContext`bad0$$}, $CellContext`tmax$$]]]], \
+{$CellContext`t, 0, 
+          Min[$CellContext`tmax$$, 
+           Min[
+            Map[Part[#, 1, 1, 2]& , $CellContext`soln$]]]}, AxesLabel -> 
+         Map[TraditionalForm, {$CellContext`t, {
+             Style[
+              $CellContext`good[$CellContext`t], $CellContext`col1$], 
+             Style[
+              $CellContext`bad[$CellContext`t], $CellContext`col2$]}}], 
+         PlotRange -> {-1, 300000}, AxesOrigin -> {0, 0}, 
+         PlotStyle -> {$CellContext`col1$, $CellContext`col2$}, 
+         ImageSize -> {400, 300}, ImagePadding -> {{27, 11}, {25, 25}}]], 
+      "Specifications" :> {
+       Delimiter, 
+        "Kills per Soldier", {{$CellContext`c$$, 0.01, "Good"}, 0.01, 0.07, 
+         ImageSize -> Tiny, Appearance -> 
+         "Labeled"}, {{$CellContext`a$$, 0.02, "Bad"}, 0.02, 0.05, ImageSize -> 
+         Tiny, Appearance -> "Labeled"}, Delimiter, 
+        "Bomb Dropped Time", {{$CellContext`f$$, 100, "Good"}, 50, 200, 
+         ImageSize -> Tiny, Appearance -> 
+         "Labeled"}, {{$CellContext`e$$, 100, "Bad"}, 50, 200, ImageSize -> 
+         Tiny, Appearance -> "Labeled"}, Delimiter, 
+        "Bomb Effectiveness", {{$CellContext`g$$, 0.5, "Good"}, 0.1, 0.8, 
+         ImageSize -> Tiny, Appearance -> 
+         "Labeled"}, {{$CellContext`h$$, 0.5, "Bad"}, 0.1, 0.8, ImageSize -> 
+         Tiny, Appearance -> "Labeled"}, Delimiter, 
+        "Reinforcements", {{$CellContext`b$$, 20000, "Good"}, 10000, 20000, 
+         ImageSize -> Tiny, Appearance -> 
+         "Labeled"}, {{$CellContext`d$$, 20000, "Bad"}, 10000, 20000, 
+         ImageSize -> Tiny, Appearance -> 
+         "Labeled"}, {{$CellContext`j$$, 10, "Good Rate"}, 5, 50, ImageSize -> 
+         Tiny, Appearance -> "Labeled"}, {{$CellContext`k$$, 10, "Bad Rate"}, 
+         5, 50, ImageSize -> Tiny, Appearance -> "Labeled"}, Delimiter, 
+        "initial troops", {{$CellContext`good0$$, 30000, "Good"}, 10000, 
+         50000, Appearance -> "Labeled", ImageSize -> 
+         Tiny}, {{$CellContext`bad0$$, 15000, "Bad"}, 10000, 50000, 
+         Appearance -> "Labeled", ImageSize -> Tiny}, 
+        Delimiter, {{$CellContext`tmax$$, 100, "time"}, 5, 210, Appearance -> 
+         "Labeled", ImageSize -> Tiny}}, 
+      "Options" :> {
+       ControlPlacement -> Left, 
+        TrackedSymbols :> {$CellContext`c$$, $CellContext`a$$, \
+$CellContext`f$$, $CellContext`e$$, $CellContext`g$$, $CellContext`h$$, \
+$CellContext`b$$, $CellContext`d$$, $CellContext`j$$, $CellContext`k$$, \
+$CellContext`good0$$, $CellContext`bad0$$, $CellContext`tmax$$}}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{645., {232., 239.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`Lanchester[{
+          Pattern[$CellContext`a, 
+           Blank[]], 
+          Pattern[$CellContext`b, 
+           Blank[]], 
+          Pattern[$CellContext`c, 
+           Blank[]], 
+          Pattern[$CellContext`d, 
+           Blank[]], 
+          Pattern[$CellContext`e, 
+           Blank[]], 
+          Pattern[$CellContext`f, 
+           Blank[]], 
+          Pattern[$CellContext`g, 
+           Blank[]], 
+          Pattern[$CellContext`h, 
+           Blank[]], 
+          Pattern[$CellContext`j, 
+           Blank[]], 
+          Pattern[$CellContext`k, 
+           Blank[]]}, {
+          Pattern[$CellContext`x0, 
+           Blank[]], 
+          Pattern[$CellContext`y0, 
+           Blank[]]}, 
+         Pattern[$CellContext`t1, 
+          Blank[]]] := 
+       Module[{$CellContext`x, $CellContext`y, $CellContext`t}, 
+         Flatten[
+          ReplaceAll[{$CellContext`x, $CellContext`y}, 
+           Quiet[
+            
+            NDSolve[{
+             Derivative[1][$CellContext`x][$CellContext`t] == 
+              Boole[$CellContext`x[$CellContext`t] > 0] 
+               Boole[$CellContext`y[$CellContext`t] > 
+                 0] ((-$CellContext`a) $CellContext`y[$CellContext`t] + \
+$CellContext`b Sum[
+                   
+                   DiracDelta[$CellContext`t - $CellContext`n], \
+{$CellContext`n, 5, 
+                    150, $CellContext`j}] - $CellContext`h \
+$CellContext`x[$CellContext`t] DiracDelta[$CellContext`t - $CellContext`e] - 
+                250000 DiracDelta[$CellContext`t - 200]), 
+              Derivative[1][$CellContext`y][$CellContext`t] == 
+              Boole[$CellContext`x[$CellContext`t] > 0] 
+               Boole[$CellContext`y[$CellContext`t] > 
+                 0] ((-$CellContext`c) $CellContext`x[$CellContext`t] + \
+$CellContext`d Sum[
+                   
+                   DiracDelta[$CellContext`t - $CellContext`n], \
+{$CellContext`n, 5, 
+                    150, $CellContext`k}] - $CellContext`g \
+$CellContext`y[$CellContext`t] DiracDelta[$CellContext`t - $CellContext`f] - 
+                250000 DiracDelta[$CellContext`t - 200]), $CellContext`x[
+               0] == $CellContext`x0, $CellContext`y[
+               0] == $CellContext`y0}, {$CellContext`x, $CellContext`y}, \
+{$CellContext`t, 0, $CellContext`t1}]]]]], 
+       Attributes[Derivative] = {NHoldAll, ReadProtected}}; 
+     Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.704057457920331*^9},ExpressionUUID->"646a0227-cb90-49cb-91d9-\
+945ac180a57d"]
+}, Open  ]]
+},
+WindowSize->{759, 553},
+WindowMargins->{{Automatic, 252}, {24, Automatic}},
+FrontEndVersion->"11.1 for Microsoft Windows (64-bit) (March 13, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 11315, 288, 867, "Input", "ExpressionUUID" -> \
+"9cf1b154-20d4-4969-ae21-976b0f667b58"],
+Cell[11898, 312, 9667, 191, 521, "Output", "ExpressionUUID" -> \
+"646a0227-cb90-49cb-91d9-945ac180a57d"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
